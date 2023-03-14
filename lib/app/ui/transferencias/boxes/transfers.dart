@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sysmanagment/app/controllers/tranferencia_controller.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
 
 import 'exchange/transfers/datatable.dart';
 import 'transferform.dart';
 
-class TransfersUi extends StatelessWidget {
+class TransfersUi extends GetView<TransFerenciaController> {
   const TransfersUi({
     Key? key,
   }) : super(key: key);
@@ -30,12 +32,24 @@ class TransfersUi extends StatelessWidget {
                   padding: EdgeInsets.all(defaultPadding / 2),
                   color: TransferPalet.darkcolor,
                   child: Text('TRANSFERENCIAS ')),
+              TextButton.icon(onPressed: () {
+                controller.showtransferForm();
+              }, icon: Obx(() {
+                return Icon(
+                    controller.showTransferenceForm ? Icons.close : Icons.add);
+              }), label: Obx(() {
+                return Text(controller.showTransferenceForm ? '' : 'NOVA');
+              }))
             ],
           ),
           SizedBox(
             height: defaultPadding,
           ),
-          TranferForm(),
+          Obx(() {
+            return controller.showTransferenceForm
+                ? TranferForm()
+                : Container();
+          }),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

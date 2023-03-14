@@ -2,18 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 
 class AddInput extends StatelessWidget {
-  AddInput({Key? key, this.hint, this.controller, this.title, this.input_width})
+  AddInput(
+      {Key? key,
+      this.maxLine,
+      this.multiline = false,
+      this.hint,
+      this.controller,
+      this.title,
+      this.input_width})
       : super(key: key);
   final TextEditingController? controller;
   final String? title;
   final double? input_width;
   String? hint;
+  bool multiline;
+  int? maxLine;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       // margin: EdgeInsets.only(top: 10),
-      height: 55,
+      height: multiline ? null : 55,
       width: input_width ?? double.infinity,
       decoration: BoxDecoration(
           border: Border.all(
@@ -22,20 +31,22 @@ class AddInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(8)),
       child: Row(
         children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-            // color: Colors.black12,
-            decoration: BoxDecoration(
-              border: Border(right: BorderSide(color: Colors.white12)),
+          if (!multiline)
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+              // color: Colors.black12,
+              decoration: BoxDecoration(
+                border: Border(right: BorderSide(color: Colors.white12)),
+              ),
+              child: Text(title!),
             ),
-            child: Text(title!),
-          ),
           Divider(
             color: Colors.red,
           ),
           Expanded(
               child: TextFormField(
             controller: controller,
+            maxLines: multiline ? maxLine : 1888,
             decoration: InputDecoration(
               focusColor: Colors.transparent,
               hintText: hint,

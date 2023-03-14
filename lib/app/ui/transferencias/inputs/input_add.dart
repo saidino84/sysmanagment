@@ -46,7 +46,7 @@ class AddInput extends StatelessWidget {
           Expanded(
               child: TextFormField(
             controller: controller,
-            maxLines: multiline ? maxLine : 1888,
+            maxLines: multiline ? maxLine : 1,
             decoration: InputDecoration(
               focusColor: Colors.transparent,
               hintText: hint,

@@ -50,20 +50,6 @@ class TransfersUi extends GetView<TransFerenciaController> {
                 ? TranferForm()
                 : Container();
           }),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Text('TRANSFERENCIAS '),
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: TransferPalet.darkcolor,
-                ),
-                onPressed: () {},
-                label: Text('SALVAR'),
-                icon: Icon(Icons.add),
-              )
-            ],
-          ),
           Divider(
             color: TransferPalet.primaryColor,
           ),

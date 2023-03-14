@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
+import 'package:sysmanagment/app/ui/responsive/responsive.dart';
 
 class TransferDataTable extends StatelessWidget {
   const TransferDataTable({
@@ -10,11 +11,14 @@ class TransferDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: defaultPadding),
-        scrollDirection: Axis.horizontal,
+    Size size = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      padding: EdgeInsets.only(left: defaultPadding),
+      child: Container(
+        width: ResponsiveLayout.isDesktop(context) ||
+                ResponsiveLayout.isTable(context)
+            ? size.width
+            : 800,
         child: DataTable(
             columnSpacing: 8.8,
             horizontalMargin: 0.0,

@@ -94,7 +94,8 @@ class TransferAppBar extends GetView<AppController> {
                           ),
                           CircleAvatar(
                             backgroundColor: Colors.blueAccent,
-                            child: Image.asset('assets/aviator_jogo.png'),
+                            backgroundImage: AssetImage(
+                                'assets/saidino/saidino_profile.png'),
                           ),
                           SizedBox(
                             width: defaultPadding,

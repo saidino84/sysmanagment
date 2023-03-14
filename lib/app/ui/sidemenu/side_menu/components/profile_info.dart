@@ -19,7 +19,7 @@ class ProfileInfo extends StatelessWidget {
             ),
             CircleAvatar(
               radius: 50,
-              // backgroundImage: AssetImage('assets/images/saidino.jpg'),
+              backgroundImage: AssetImage('assets/saidino/saidino_profile.png'),
             ),
             Text(
               "Saidino Adamo",

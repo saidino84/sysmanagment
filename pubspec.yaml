@@ -65,6 +65,7 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/saidino/
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

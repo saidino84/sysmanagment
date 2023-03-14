@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 
 class AddInput extends StatelessWidget {
-  const AddInput({Key? key, this.controller, this.title, this.input_width})
+  AddInput({Key? key, this.hint, this.controller, this.title, this.input_width})
       : super(key: key);
   final TextEditingController? controller;
   final String? title;
   final double? input_width;
+  String? hint;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class AddInput extends StatelessWidget {
             controller: controller,
             decoration: InputDecoration(
               focusColor: Colors.transparent,
-              hintText: 'Your amount',
+              hintText: hint,
               contentPadding: EdgeInsets.symmetric(
                 horizontal: 20.0,
                 vertical: 20.0,

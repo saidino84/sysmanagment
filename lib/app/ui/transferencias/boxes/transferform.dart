@@ -15,8 +15,11 @@ class TranferForm extends StatelessWidget {
       // color: Colors.black54,
       padding: EdgeInsets.all(defaultPadding / 2),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,14 +60,16 @@ class TranferForm extends StatelessWidget {
                   ),
                   AddInput(
                     title: 'Iva',
-                    input_width: 100,
+                    input_width: 170,
+                    hint: '16%',
                   ),
                   SizedBox(
-                    width: defaultPadding,
+                    width: defaultPadding / 2,
                   ),
                   AddInput(
                     title: 'Tranporte',
-                    input_width: 180,
+                    hint: '10%',
+                    input_width: 170,
                   ),
                   SizedBox(
                     width: defaultPadding,

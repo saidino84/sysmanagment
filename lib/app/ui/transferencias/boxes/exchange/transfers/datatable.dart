@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
-import 'package:sysmanagment/app/ui/responsive/responsive.dart';
 
 class TransferDataTable extends StatelessWidget {
   const TransferDataTable({
@@ -12,18 +11,16 @@ class TransferDataTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      padding: EdgeInsets.only(left: defaultPadding),
-      child: Container(
-        width: ResponsiveLayout.isDesktop(context) ||
-                ResponsiveLayout.isTable(context)
-            ? size.width
-            : 800,
+    return SizedBox(
+      width: double.infinity,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.only(left: defaultPadding),
         child: DataTable(
             columnSpacing: 8.8,
             horizontalMargin: 0.0,
             showBottomBorder: true,
-            columns: [
+            columns: const [
               DataColumn(label: Text('ID')),
               DataColumn(label: Text('Number')),
               DataColumn(label: Text('Date')),
@@ -55,17 +52,17 @@ class TransferDataTable extends StatelessWidget {
                                 ? Colors.greenAccent
                                 : Colors.redAccent,
                           )),
-                          DataCell(Text('17%')),
-                          DataCell(Text('25,435.52')),
-                          DataCell(Text('28.3645.00')),
+                          const DataCell(Text('17%')),
+                          const DataCell(Text('25,435.52')),
+                          const DataCell(Text('28.3645.00')),
                           DataCell(IconButton(
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.download,
                                 color: Colors.blueAccent,
                               ))),
-                          DataCell(Text('saidino')),
-                          DataCell(
+                          const DataCell(Text('saidino')),
+                          const DataCell(
                               Text('This is owesome description ao d vaca')),
                         ]))),
       ),

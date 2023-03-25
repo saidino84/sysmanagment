@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sysmanagment/app/controllers/AppController.dart';
+import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/sidemenu/side_menu/side_menu.dart';
-import 'package:sysmanagment/app/ui/transferencias/boxes/balancestatus/balancete.dart';
-import 'package:sysmanagment/app/ui/transferencias/boxes/exchange/exchangeui.dart';
-import 'package:sysmanagment/app/ui/transferencias/transfer_toolbar/transfer_tolbar.dart';
+import 'package:sysmanagment/app/ui/transferencias/transfer_toolbar/components/month_dropdown.dart';
+import 'package:sysmanagment/app/ui/transferencias/transfer_toolbar/components/search_input.dart';
 import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
-
-import '../transferencias/components.dart';
+import '../transferencias/mobilemain_ui.dart';
 
 class MobileLayout extends StatelessWidget {
   const MobileLayout({Key? key}) : super(key: key);
@@ -17,32 +18,42 @@ class MobileLayout extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: TransferPalet.darkcolor,
         elevation: 0,
+        title: Text('System Manager'),
+        actions: [
+          Icon(Icons.notifications),
+          SizedBox(
+            width: defaultPadding / 2,
+          ),
+          CircleAvatar(
+            backgroundColor: Colors.blueAccent,
+            backgroundImage: AssetImage('assets/saidino/saidino_profile.png'),
+          ),
+          SizedBox(
+            width: defaultPadding,
+          ),
+        ],
       ),
       drawer: SideMenu(),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              TransferAppBar(size),
-              Padding(
-                padding: const EdgeInsets.all(18.0),
-                child: Column(
-                  children: [
-                    ExchangeUi(),
-                    SizedBox(
-                      height: 18,
-                    ),
-                    BalanceStatus(),
-                    SizedBox(
-                      height: 18,
-                    ),
-                    TransfersUi()
-                  ],
+      body: Column(
+        children: [
+          Container(
+            // height: 200,
+            color: TransferPalet.darkcolor,
+            padding: EdgeInsets.only(
+              bottom: defaultPadding,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                MonthDropDownMenu(controller: Get.find<AppController>()),
+                SearchInput(
+                  width: 200,
                 ),
-              )
-            ],
+              ],
+            ),
           ),
-        ),
+          MobiletransmainUI(),
+        ],
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
+import 'package:sysmanagment/app/ui/responsive/responsive.dart';
 
 class AddInput extends StatelessWidget {
   AddInput(
@@ -33,16 +34,16 @@ class AddInput extends StatelessWidget {
         children: [
           if (!multiline)
             Container(
-              padding: EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+              padding: EdgeInsets.symmetric(horizontal: defaultPadding / 3),
               // color: Colors.black12,
               decoration: BoxDecoration(
                 border: Border(right: BorderSide(color: Colors.white12)),
               ),
               child: Text(title!),
             ),
-          Divider(
-            color: Colors.red,
-          ),
+          // Divider(
+          //   color: Colors.red,
+          // ),
           Expanded(
               child: TextFormField(
             controller: controller,
@@ -50,10 +51,12 @@ class AddInput extends StatelessWidget {
             decoration: InputDecoration(
               focusColor: Colors.transparent,
               hintText: hint,
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 20.0,
-                vertical: 20.0,
-              ),
+              contentPadding: multiline
+                  ? null
+                  : EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 20.0,
+                    ),
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 // borderRadius: BorderRadius.circular(32.0),

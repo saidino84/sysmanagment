@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MyInput extends StatelessWidget {
-  const MyInput({Key? key, this.controller}) : super(key: key);
+  const MyInput({Key? key, this.controller, this.hint}) : super(key: key);
   final TextEditingController? controller;
+  final String? hint;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class MyInput extends StatelessWidget {
               controller: controller,
               decoration: InputDecoration(
                 focusColor: Colors.transparent,
-                hintText: 'Your amount',
+                hintText: hint,
                 contentPadding: EdgeInsets.symmetric(
                   horizontal: 20.0,
                   vertical: 20.0,

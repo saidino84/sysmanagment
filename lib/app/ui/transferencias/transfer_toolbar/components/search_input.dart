@@ -4,14 +4,14 @@ import 'package:sysmanagment/app/ui/transferencias/components.dart';
 import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
 
 class SearchInput extends StatelessWidget {
-  const SearchInput({
-    super.key,
-  });
+  SearchInput({super.key, this.width});
+  double? width;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: ResponsiveLayout.islargeMobile(context) ? 120 : 200,
+      width:
+          ResponsiveLayout.islargeMobile(context) && width == null ? 120 : 200,
       margin: EdgeInsets.only(right: defaultPadding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(defaultBorderRadius),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sysmanagment/app/controllers/vat_calc_controller.dart';
 import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
 
@@ -20,9 +21,10 @@ class ExchangeUi extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Exchange'),
+          Text('Calcule Preco sem Iva e:'),
           MyInput(
             controller: VatController.priceWithVatInput,
+            hint: '0.0',
           ),
           Container(
             margin: EdgeInsets.only(top: 8.0),
@@ -44,24 +46,22 @@ class ExchangeUi extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Rate',
+                        'SEM IVA',
                         style: TextStyle(fontSize: 8),
                       ),
-                      StreamBuilder<double>(
-                          stream: VatController.controlstrem.stream,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return Text(snapshot.data.toString());
-                            }
-                            return Text('0.00000020554');
-                          })
+                      Obx(() {
+                        return Text(
+                            VatController.price_vatinset.toStringAsFixed(2));
+                      }),
                     ],
                   ),
                 )
               ],
             ),
           ),
-          MyInput(),
+          // MyInput(
+          //   controller: VatController.priceWithotVatInput,
+          // ),
           SizedBox(
             height: 12,
           ),
@@ -70,11 +70,7 @@ class ExchangeUi extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  double value =
-                      double.tryParse(VatController.priceWithVatInput.text) ??
-                          20.0;
-                  VatController.getPriceWithVat(value);
-                  print('CALC SET');
+                  VatController.calcVatMaths();
                 },
                 child: Text('Exchange Rate'),
                 style: TextButton.styleFrom(

@@ -5,7 +5,7 @@ import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
 
 import 'exchange/transfers/datatable.dart';
-import 'transferform.dart';
+import 'transferform/transferform.dart';
 
 class TransfersUi extends GetView<TransFerenciaController> {
   const TransfersUi({

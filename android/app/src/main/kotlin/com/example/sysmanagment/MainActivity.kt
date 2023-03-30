@@ -1,4 +1,4 @@
-package com.example.sysmanagment
+package com.saidino.sysmanagment
 
 import io.flutter.embedding.android.FlutterActivity
 

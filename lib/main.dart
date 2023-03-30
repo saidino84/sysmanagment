@@ -1,14 +1,33 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:sysmanagment/app/ui/responsive/desktop_layout.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:sysmanagment/shared.dart';
 
-import 'app/bindings/app_bindings.dart';
-import 'app/ui/responsive/mobile_layout.dart';
-import 'app/ui/responsive/tablet_layout.dart';
-import 'app/ui/transferencias/components.dart';
+import 'firebase_options.dart';
 
-void main(List<String> args) {
+Future<void> main(List<String> args) async {
+  const firebaseConfig = FirebaseOptions(
+      apiKey: "AIzaSyBvNqXkPUH-djEpZtXctwKnZKZwDr2XKTY",
+      authDomain: "flutter-login-cfbd7.firebaseapp.com",
+      databaseURL:
+          "https://flutter-login-cfbd7-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "flutter-login-cfbd7",
+      storageBucket: "flutter-login-cfbd7.appspot.com",
+      messagingSenderId: "342292747100",
+      appId: "1:342292747100:web:ebdb6541b5c0ec5bfea799",
+      measurementId: "G-KHDH00GVMF");
+
+// Initialize Firebase
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+    // options: firebaseConfig,
+  );
+
+  //offline persistence
+  // Web.
+
+// All other platforms.
+  FirebaseFirestore.instance.settings = Settings(persistenceEnabled: false);
   runApp(SysManagment());
 }
 

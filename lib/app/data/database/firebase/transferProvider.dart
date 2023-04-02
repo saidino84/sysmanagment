@@ -30,7 +30,6 @@ class TransferProvider {
       Map<String, dynamic> dados = json.data() as Map<String, dynamic>;
       Transferencia transfer =
           Transferencia.fromJson(dados).copyWith(id: json.id);
-      print(dados);
       return transfer;
     }).toList();
   }

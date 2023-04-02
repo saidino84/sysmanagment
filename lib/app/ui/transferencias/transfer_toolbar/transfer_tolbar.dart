@@ -4,6 +4,7 @@ import 'package:sysmanagment/app/controllers/AppController.dart';
 import 'package:sysmanagment/app/data/models/meses.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/responsive/responsive.dart';
+import 'package:sysmanagment/app/ui/transferencias/transfer_toolbar/components/users_dropdown.dart';
 import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
 
 import 'components/month_dropdown.dart';
@@ -102,7 +103,8 @@ class TransferAppBar extends GetView<AppController> {
                           ),
                           if (!ResponsiveLayout.isMobile(context) &&
                               !ResponsiveLayout.islargeMobile(context))
-                            MonthDropDownMenu(controller: controller)
+                            // MonthDropDownMenu(controller: controller)
+                            UsersDropDownMenu(controller: Get.find())
                         ],
                       ),
                     ),

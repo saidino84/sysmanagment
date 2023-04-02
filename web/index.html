@@ -25,6 +25,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="sysmanagment">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="stylesheet" href="loading.css">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
@@ -40,7 +41,29 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <div class="card">
+    <h3>Analise de Dados</h3>
+    <p>Analise Diario de Transferências</p>
+    <div class="pulse"></div>
+    <div class="area-chart">
+        <canvas class="canvas" id="canvas"></canvas>
+    </div>
+
+    <div class="loding-container">
+        <div class="text">
+            <h4>Loading Full System</h4>
+        </div>
+        <div class="loading">
+            <div class="line-box">
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
   <script>
    // Import the functions you need from the SDKs you need
@@ -81,5 +104,8 @@ const analytics = getAnalytics(app);
       });
     });
   </script>
+<script src='loading.js'></script>
+
+ 
 </body>
 </html>

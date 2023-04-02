@@ -10,8 +10,11 @@ class SearchInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width:
-          ResponsiveLayout.islargeMobile(context) && width == null ? 120 : 200,
+      width: ResponsiveLayout.islargeMobile(context) |
+                  ResponsiveLayout.isMobile(context) &&
+              width != null
+          ? width
+          : 200,
       margin: EdgeInsets.only(right: defaultPadding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(defaultBorderRadius),

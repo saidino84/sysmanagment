@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sysmanagment/app/data/database/firebase/user_provider.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 
 import 'components/area_info_text.dart';
@@ -44,7 +45,11 @@ class SideMenu extends StatelessWidget {
                   children: [
                     Divider(),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        var provider = UserProvider();
+                        var users = await provider.getUsersAsFuture();
+                        print(users.length);
+                      },
                       child: FittedBox(
                         child: Row(
                           children: [
@@ -53,7 +58,7 @@ class SideMenu extends StatelessWidget {
                               style: TextStyle(
                                   color: Theme.of(context)
                                       .textTheme
-                                      .bodyText1!
+                                      .bodyLarge!
                                       .color),
                             ),
                             SizedBox(

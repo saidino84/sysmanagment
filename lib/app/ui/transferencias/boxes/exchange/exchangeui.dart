@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sysmanagment/app/controllers/vat_calc_controller.dart';
+import 'package:sysmanagment/app/ui/global/flash_msg.dart';
 import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
 
 import 'componets/input.dart';
@@ -71,6 +72,8 @@ class ExchangeUi extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   VatController.calcVatMaths();
+                  SnackMessager.showMessage(
+                      context, MessageType.SUCESSULL, 'SETTING DONE !');
                 },
                 child: Text('Exchange Rate'),
                 style: TextButton.styleFrom(

@@ -55,8 +55,8 @@ List<DataRow> _createDataRow(AsyncSnapshot<List<Transferencia>> trans) {
     print('*************  err ***********');
   }
   if (trans.hasData) {
-    print('*******FROM API TO LIST ********');
-    print(trans.data);
+    print(
+        '*****TRANSFERS FOUND NOW PUTTING THEM INTO DataTabe*****(ui/.../../transfers/datatable.dart)');
     var dados = trans.data ?? [];
     var rows = List.generate(dados.length, (index) {
       Transferencia transfer = dados[index];

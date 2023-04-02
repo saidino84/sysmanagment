@@ -47,7 +47,7 @@ class MobileLayout extends StatelessWidget {
               children: [
                 MonthDropDownMenu(controller: Get.find<AppController>()),
                 SearchInput(
-                  width: 200,
+                  width: 360,
                 ),
               ],
             ),

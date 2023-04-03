@@ -93,11 +93,12 @@ class TransferAppBar extends GetView<AppController> {
                           SizedBox(
                             width: defaultPadding / 2,
                           ),
-                          CircleAvatar(
-                            backgroundColor: Colors.blueAccent,
-                            backgroundImage: AssetImage(
-                                'assets/saidino/saidino_profile.png'),
-                          ),
+
+                          // CircleAvatar(
+                          //   backgroundColor: Colors.blueAccent,
+                          //   backgroundImage: AssetImage(
+                          //       'assets/saidino/saidino_profile.png'),
+                          // ),
                           SizedBox(
                             width: defaultPadding,
                           ),

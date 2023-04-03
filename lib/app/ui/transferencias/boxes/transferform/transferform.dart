@@ -1,9 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:sysmanagment/app/controllers/tranferencia_controller.dart';
-import 'package:sysmanagment/app/shared/constants.dart';
-import 'package:sysmanagment/app/ui/responsive/responsive.dart';
-import 'package:sysmanagment/app/ui/transferencias/inputs/input_add.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
 import 'package:sysmanagment/shared.dart';
 
 import 'desktop_form.dart';
@@ -35,7 +29,6 @@ class TranferForm extends GetView<TransFerenciaController> {
           SizedBox(
             height: defaultPadding,
           ),
-          if (ResponsiveLayout.isTable(context)) Text('T A B L E T'),
           //Mobile e LargeMobile
           if (ResponsiveLayout.isMobile(context) ||
               ResponsiveLayout.islargeMobile(context))
@@ -61,23 +54,33 @@ class TranferForm extends GetView<TransFerenciaController> {
             ),
           ),
           SizedBox(height: defaultPadding / 2),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              // Text('TRANSFERENCIAS '),
-              ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                    // backgroundColor: TransferPalet.darkcolor,
-                    ),
-                onPressed: () async {
-                  print('ADICIONANDO...');
-                  await controller.adicionar();
-                  print('thread finished');
-                },
-                label: Text('SALVAR'),
-                icon: Icon(Icons.add),
-              )
-            ],
+          Obx(
+            () => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Text('TRANSFERENCIAS '),
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                      // backgroundColor: TransferPalet.darkcolor,
+                      ),
+                  onPressed: () async {
+                    if (controller.editTransfer) {
+                      await controller.adicionarOuActualizar(true);
+                      print('UPDATED');
+                      return;
+                    } else {
+                      await controller.adicionarOuActualizar(false);
+                    }
+                    print('****DICIONADO');
+                  },
+                  label:
+                      Text(controller.editTransfer ? 'ACTUALIZAR' : 'SALVAR'),
+                  icon: controller.editTransfer
+                      ? Icon(Icons.update)
+                      : Icon(Icons.add),
+                )
+              ],
+            ),
           ),
         ],
       ),

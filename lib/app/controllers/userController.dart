@@ -6,8 +6,8 @@ class UserController extends GetxController {
   UserModel? currentUser;
   late List<UserModel> users;
 
-  onInit() {
-    getCurrentUser;
+  onInit() async {
+    await getCurrentUser;
     getUsersAsFutue.then((value) {
       users = value;
       print('USERS SET DONE');
@@ -22,5 +22,10 @@ class UserController extends GetxController {
     currentUser = await UserRepository.getCurrentUser().then((value) => value);
     print('User has got');
     return currentUser;
+  }
+
+  void changeUser(UserModel userModel) {
+    print('====CURRET USER IS ===');
+    print(currentUser!.name);
   }
 }

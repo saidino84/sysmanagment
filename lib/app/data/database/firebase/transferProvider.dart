@@ -1,7 +1,7 @@
-import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:sysmanagment/app/data/models/transfer.dart';
+import 'package:sysmanagment/app/ui/global/flash_msg.dart';
 
 class TransferProvider {
   FirebaseFirestore get firestoredb => FirebaseFirestore.instance;
@@ -32,6 +32,28 @@ class TransferProvider {
           Transferencia.fromJson(dados).copyWith(id: json.id);
       return transfer;
     }).toList();
+  }
+
+  deleteTransferById(Transferencia transfer) {
+    firestoredbRef.doc(transfer.id).delete().then((value) {
+      SnackMessager.showMessage(Get.context!, MessageType.SUCESSULL,
+          "Transfer ${transfer.number} DELETADO COM SUCESSO");
+    }).onError((error, stackTrace) {
+      SnackMessager.showMessage(Get.context!, MessageType.SUCESSULL,
+          "Transfer ${transfer.number} FALHA AO REMOVER");
+    });
+  }
+
+  updateTransferById(Transferencia transfer) {
+    print('ID S ${transfer.id}');
+    firestoredbRef.doc(transfer.id).update(transfer.toJson).then((value) {
+      SnackMessager.showMessage(Get.context!, MessageType.SUCESSULL,
+          "Transfer ${transfer.number} Actualizado Com Sucesso");
+    }).onError((error, stackTrace) {
+      SnackMessager.showMessage(Get.context!, MessageType.SUCESSULL,
+          "Transfer ${transfer.number} FALHA AO NA ACTUALIZACOA $error");
+      print(error);
+    });
   }
 
   Stream<List<Transferencia>> getTransfersAsStream() {

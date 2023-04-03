@@ -13,5 +13,13 @@ class TransferRepository {
     provider.addTransfer(transfer);
   }
 
+  Future deleteTransfe(Transferencia transfer) async {
+    await provider.deleteTransferById(transfer);
+  }
+
+  Future upateTransfer(Transferencia transfer) async {
+    provider.updateTransferById(transfer);
+  }
+
   List<String> meses = [];
 }

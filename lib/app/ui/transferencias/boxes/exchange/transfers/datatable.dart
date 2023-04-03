@@ -35,7 +35,7 @@ class DataStreamed extends GetView<TransFerenciaController> {
                   DataColumn(label: Text('Subtotal')),
                   DataColumn(label: Text('Transport')),
                   DataColumn(label: Text('Total')),
-                  DataColumn(label: Text('Action')),
+                  DataColumn(label: Text('Delete & Edit')),
                   DataColumn(label: Text('user')),
                   DataColumn(label: Text('Description')),
                 ],
@@ -48,6 +48,7 @@ class DataStreamed extends GetView<TransFerenciaController> {
 }
 
 List<DataRow> _createDataRow(AsyncSnapshot<List<Transferencia>> trans) {
+  TransFerenciaController controller = Get.find();
   if (trans.hasError) {
     print('ERROR...');
     print('*************  err ***********');
@@ -62,27 +63,48 @@ List<DataRow> _createDataRow(AsyncSnapshot<List<Transferencia>> trans) {
       Transferencia transfer = dados[index];
       var data = DateTime.fromMicrosecondsSinceEpoch(
           transfer.date ?? DateTime.now().microsecondsSinceEpoch);
-      return DataRow(cells: [
-        DataCell(Text('${index}')),
-        DataCell(Text('${transfer.number}')),
-        DataCell(Text('${data}')),
-        DataCell(Icon(
-          transfer.delivered ? Icons.done : Icons.highlight_remove_rounded,
-          color: transfer.delivered ? Colors.greenAccent : Colors.redAccent,
-        )),
-        DataCell(Text("${transfer.taxRate ?? 16}%")),
-        DataCell(Text("${transfer.subtotal ?? 0.0}")),
-        DataCell(Text("${transfer.transport ?? 0.0}%")),
-        DataCell(Text("${transfer.total ?? 0.0}%")),
-        DataCell(IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.download,
-              color: Colors.blueAccent,
-            ))),
-        DataCell(Text("${transfer.username ?? 'admin'}")),
-        DataCell(Text("${transfer.description}")),
-      ]);
+      return DataRow(
+          selected: transfer.delivered,
+          onSelectChanged: (value) {
+            controller.updateTransfer(transfer.copyWith(
+                hasSent: !transfer.hasSent, delivered: !transfer.delivered));
+          },
+          cells: [
+            DataCell(Text('${index + 1}')),
+            DataCell(Text('${transfer.number}')),
+            DataCell(Text('${data}')),
+            DataCell(Icon(
+              transfer.delivered ? Icons.done : Icons.highlight_remove_rounded,
+              color: transfer.delivered ? Colors.greenAccent : Colors.redAccent,
+            )),
+            DataCell(Text("${transfer.taxRate ?? 16}%")),
+            DataCell(Text("${transfer.subtotal ?? 0.0}")),
+            DataCell(Text("${transfer.transport ?? 0.0}%")),
+            DataCell(Text("${transfer.total!.toStringAsFixed(2) ?? 0.0}")),
+            DataCell(Row(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      controller.deleteTransfer(transfer);
+                    },
+                    icon: const Icon(
+                      Icons.delete_forever,
+                      color: Colors.redAccent,
+                    )),
+                IconButton(
+                    onPressed: () {
+                      // controller.deleteTransfer(transfer);
+                      controller.openToEditTransfer(transfer);
+                    },
+                    icon: const Icon(
+                      Icons.edit,
+                      color: Colors.blueAccent,
+                    )),
+              ],
+            )),
+            DataCell(Text("${transfer.username ?? 'admin'}")),
+            DataCell(Text("${transfer.description}")),
+          ]);
     });
     return rows;
   }

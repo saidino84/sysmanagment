@@ -5,7 +5,7 @@ import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/sidemenu/side_menu/side_menu.dart';
 import 'package:sysmanagment/app/ui/transferencias/transfer_toolbar/components/month_dropdown.dart';
 import 'package:sysmanagment/app/ui/transferencias/transfer_toolbar/components/search_input.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 import '../transferencias/mobilemain_ui.dart';
 
 class MobileLayout extends StatelessWidget {
@@ -16,7 +16,7 @@ class MobileLayout extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: TransferPalet.darkcolor,
+        backgroundColor: AppColors.darkcolor,
         elevation: 0,
         title: Text('System Manager'),
         actions: [
@@ -38,7 +38,7 @@ class MobileLayout extends StatelessWidget {
         children: [
           Container(
             // height: 200,
-            color: TransferPalet.darkcolor,
+            color: AppColors.darkcolor,
             padding: EdgeInsets.only(
               bottom: defaultPadding,
             ),

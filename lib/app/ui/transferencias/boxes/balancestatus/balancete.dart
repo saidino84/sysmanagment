@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/ui/responsive/responsive.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 
 import 'components.dart';
 
@@ -27,7 +27,7 @@ class BalanceStatus extends StatelessWidget {
             width: double.infinity,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: TransferPalet.secondary,
+                color: AppColors.secondary,
                 borderRadius: BorderRadius.circular(8)),
             child: Text('Your Storage Details'),
           ),
@@ -37,7 +37,7 @@ class BalanceStatus extends StatelessWidget {
           Expanded(
             child: Container(
                 decoration: BoxDecoration(
-                  color: TransferPalet.secondary,
+                  color: AppColors.secondary,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Componets()),

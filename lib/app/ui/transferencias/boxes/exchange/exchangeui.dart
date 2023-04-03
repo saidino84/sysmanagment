@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sysmanagment/app/controllers/vat_calc_controller.dart';
 import 'package:sysmanagment/app/ui/global/flash_msg.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 
 import 'componets/input.dart';
 
@@ -17,8 +17,7 @@ class ExchangeUi extends StatelessWidget {
       constraints: BoxConstraints(maxHeight: 260, minHeight: 200),
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-          color: TransferPalet.secondary,
-          borderRadius: BorderRadius.circular(8)),
+          color: AppColors.secondary, borderRadius: BorderRadius.circular(8)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

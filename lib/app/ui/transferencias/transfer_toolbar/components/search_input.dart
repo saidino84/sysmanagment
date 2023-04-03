@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/transferencias/components.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 
 class SearchInput extends StatelessWidget {
   SearchInput({super.key, this.width});
@@ -18,7 +18,7 @@ class SearchInput extends StatelessWidget {
       margin: EdgeInsets.only(right: defaultPadding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(defaultBorderRadius),
-        color: TransferPalet.secondary.withOpacity(0.5),
+        color: AppColors.secondary.withOpacity(0.5),
         // border: Border.all(color: Colors.amberAccent),
       ),
       child: TextFormField(

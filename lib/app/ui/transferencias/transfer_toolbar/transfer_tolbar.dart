@@ -5,7 +5,7 @@ import 'package:sysmanagment/app/data/models/meses.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/responsive/responsive.dart';
 import 'package:sysmanagment/app/ui/transferencias/transfer_toolbar/components/users_dropdown.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 
 import 'components/month_dropdown.dart';
 import 'components/search_input.dart';
@@ -19,7 +19,7 @@ class TransferAppBar extends GetView<AppController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: TransferPalet.darkcolor),
+      decoration: BoxDecoration(color: AppColors.darkcolor),
       padding: EdgeInsets.symmetric(horizontal: defaultPadding),
       // constraints: BoxConstraints(maxHeight: size.height * 0.1, minHeight: 60),
       // constraints: BoxConstraints(maxHeight: size.height * 0.1, minHeight: 60),
@@ -53,11 +53,11 @@ class TransferAppBar extends GetView<AppController> {
                     borderRadius: BorderRadius.circular(20),
                     value: controller.curentMountId,
                     icon: Icon(Icons.keyboard_arrow_down),
-                    dropdownColor: TransferPalet.darkcolor,
+                    dropdownColor: AppColors.darkcolor,
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall!
-                        .copyWith(color: TransferPalet.bodyTextcolor),
+                        .copyWith(color: AppColors.bodyTextcolor),
                     items: controller.meses.map<DropdownMenuItem<Month>>(
                       (Month value) {
                         return DropdownMenuItem<Month>(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/controllers/userController.dart';
 import 'package:sysmanagment/app/data/models/users.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 
 class UsersDropDownMenu extends StatelessWidget {
   const UsersDropDownMenu({
@@ -29,11 +29,11 @@ class UsersDropDownMenu extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               value: users.data![0],
               icon: const Icon(Icons.keyboard_arrow_down),
-              dropdownColor: TransferPalet.darkcolor,
+              dropdownColor: AppColors.darkcolor,
               style: Theme.of(context)
                   .textTheme
                   .bodySmall!
-                  .copyWith(color: TransferPalet.bodyTextcolor),
+                  .copyWith(color: AppColors.bodyTextcolor),
               items: users.data!.map<DropdownMenuItem<UserModel?>>(
                 (UserModel value) {
                   return DropdownMenuItem<UserModel?>(
@@ -41,7 +41,7 @@ class UsersDropDownMenu extends StatelessWidget {
                       child: Row(
                         children: [
                           CircleAvatar(
-                            backgroundColor: TransferPalet.primaryColor,
+                            backgroundColor: AppColors.primaryColor,
                             child: Text(
                               '${value.name![0].toUpperCase()}',
                               style: TextStyle(
@@ -75,7 +75,7 @@ class UsersDropDownMenu extends StatelessWidget {
           } else {
             return CircleAvatar(
               child: CircularProgressIndicator(
-                color: TransferPalet.primaryColor,
+                color: AppColors.primaryColor,
               ),
             );
           }

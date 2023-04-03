@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sysmanagment/app/controllers/tranferencia_controller.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 
 import 'exchange/transfers/datatable.dart';
 import 'transferform/transferform.dart';
@@ -20,8 +20,7 @@ class TransfersUi extends GetView<TransFerenciaController> {
         right: defaultPadding,
       ),
       decoration: BoxDecoration(
-          color: TransferPalet.secondary,
-          borderRadius: BorderRadius.circular(10)),
+          color: AppColors.secondary, borderRadius: BorderRadius.circular(10)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,7 +29,7 @@ class TransfersUi extends GetView<TransFerenciaController> {
             children: [
               Container(
                   padding: EdgeInsets.all(defaultPadding / 2),
-                  color: TransferPalet.darkcolor,
+                  color: AppColors.darkcolor,
                   child: Text('TRANSFERENCIAS ')),
               TextButton.icon(onPressed: () {
                 controller.showtransferForm();
@@ -51,7 +50,7 @@ class TransfersUi extends GetView<TransFerenciaController> {
                 : Container();
           }),
           Divider(
-            color: TransferPalet.primaryColor,
+            color: AppColors.primaryColor,
           ),
           TransferDataTable()
         ],

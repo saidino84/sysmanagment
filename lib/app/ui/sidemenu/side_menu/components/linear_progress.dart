@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 
 class AnimatedLinearProgressIndicator extends StatelessWidget {
   const AnimatedLinearProgressIndicator({
@@ -38,7 +38,7 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
                 ),
                 LinearProgressIndicator(
                   value: value,
-                  backgroundColor: TransferPalet.darkcolor, //darkColor,
+                  backgroundColor: AppColors.darkcolor, //darkColor,
                   // color: TransferPalet.primaryColor,
                   color: Colors.amber,
                 )

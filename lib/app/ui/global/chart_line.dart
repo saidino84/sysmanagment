@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/global/score_repository.dart';
 
-import '../transferencias/wallet_pallets.dart';
+import '../transferencias/appColors.dart';
 
 class Score {
   double value;
@@ -47,8 +47,7 @@ class _ManualGraphicChartState extends State<ManualGraphicChart> {
           right: defaultPadding / 2),
       width: widget.size.width,
       decoration: BoxDecoration(
-          color: TransferPalet.darkcolor,
-          borderRadius: BorderRadius.circular(20)),
+          color: AppColors.darkcolor, borderRadius: BorderRadius.circular(20)),
       child: CustomPaint(
         child: Container(),
         painter: MyGraphicsPaineter(),

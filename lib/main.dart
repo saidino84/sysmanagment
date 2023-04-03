@@ -37,15 +37,15 @@ class SysManagment extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
-          primaryColor: TransferPalet.primaryColor,
-          scaffoldBackgroundColor: TransferPalet.bgcolor,
-          canvasColor: TransferPalet.bgcolor,
+          primaryColor: AppColors.primaryColor,
+          scaffoldBackgroundColor: AppColors.bgcolor,
+          canvasColor: AppColors.bgcolor,
           textTheme: Theme.of(context)
               .textTheme
               .apply(bodyColor: Colors.white)
               .copyWith(
-                  bodyLarge: TextStyle(color: TransferPalet.bodyTextcolor),
-                  bodyMedium: TextStyle(color: TransferPalet.bodyTextcolor))),
+                  bodyLarge: TextStyle(color: AppColors.bodyTextcolor),
+                  bodyMedium: TextStyle(color: AppColors.bodyTextcolor))),
       getPages: [
         GetPage(
             page: () => ResponsiveLayout(

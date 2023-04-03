@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sysmanagment/shared.dart';
 
 class SnackMessager {
-  static showMessage(BuildContext context, MessageType type, String message) {
+  static showMessage(BuildContext context, MessageType type, String message,
+      {String? title}) {
     return ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
@@ -14,7 +16,9 @@ class SnackMessager {
               padding: EdgeInsets.all(16),
               height: 90,
               decoration: BoxDecoration(
-                color: Color(0xFFC72C41),
+                color: type == MessageType.ERROR
+                    ? Color(0xFFC72C41)
+                    : AppColors.bluedownswatch,
                 borderRadius: BorderRadius.all(
                   Radius.circular(20),
                 ),
@@ -30,7 +34,7 @@ class SnackMessager {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Oh  snap',
+                          title ?? 'System Managment',
                           style: TextStyle(
                             fontSize: 18,
                             color: Colors.white,
@@ -62,7 +66,9 @@ class SnackMessager {
                   'assets/icons/bubbles.svg',
                   height: 48,
                   width: 40,
-                  color: Color(0xFF801336),
+                  color: type == MessageType.ERROR
+                      ? Color(0xFF801336)
+                      : AppColors.bluedark,
                 ),
               ),
             ),
@@ -75,6 +81,9 @@ class SnackMessager {
                   SvgPicture.asset(
                     'assets/icons/fail.svg',
                     height: 40,
+                    color: type == MessageType.ERROR
+                        ? Color(0xFF801336)
+                        : AppColors.bluedark,
                   ),
                   Positioned(
                     top: 10,

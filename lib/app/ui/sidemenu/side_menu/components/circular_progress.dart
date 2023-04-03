@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 
 class AnimatedCircularProgress extends StatelessWidget {
   const AnimatedCircularProgress({
@@ -30,7 +30,7 @@ class AnimatedCircularProgress extends StatelessWidget {
                         value: value,
                         // color: Colors.amberAccent,
                         // backgroundColor: TransferPalet.darkcolor //darkColor,
-                        backgroundColor: TransferPalet.darkcolor, //darkColor,
+                        backgroundColor: AppColors.darkcolor, //darkColor,
                         // color: TransferPalet.primaryColor,
                         color: Colors.amber,
                       ),

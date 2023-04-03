@@ -36,7 +36,7 @@ class TransferProvider {
 
   deleteTransferById(Transferencia transfer) {
     firestoredbRef.doc(transfer.id).delete().then((value) {
-      SnackMessager.showMessage(Get.context!, MessageType.SUCESSULL,
+      SnackMessager.showMessage(Get.context!, MessageType.ERROR,
           "Transfer ${transfer.number} DELETADO COM SUCESSO");
     }).onError((error, stackTrace) {
       SnackMessager.showMessage(Get.context!, MessageType.SUCESSULL,
@@ -50,7 +50,7 @@ class TransferProvider {
       SnackMessager.showMessage(Get.context!, MessageType.SUCESSULL,
           "Transfer ${transfer.number} Actualizado Com Sucesso");
     }).onError((error, stackTrace) {
-      SnackMessager.showMessage(Get.context!, MessageType.SUCESSULL,
+      SnackMessager.showMessage(Get.context!, MessageType.ERROR,
           "Transfer ${transfer.number} FALHA AO NA ACTUALIZACOA $error");
       print(error);
     });

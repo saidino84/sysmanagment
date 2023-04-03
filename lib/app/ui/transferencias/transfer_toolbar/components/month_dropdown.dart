@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sysmanagment/app/controllers/AppController.dart';
 import 'package:sysmanagment/app/data/models/meses.dart';
-import 'package:sysmanagment/app/ui/transferencias/wallet_pallets.dart';
+import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
 
 class MonthDropDownMenu extends StatelessWidget {
   const MonthDropDownMenu({
@@ -21,11 +21,11 @@ class MonthDropDownMenu extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         value: controller.curentMountId,
         icon: Icon(Icons.keyboard_arrow_down),
-        dropdownColor: TransferPalet.darkcolor,
+        dropdownColor: AppColors.darkcolor,
         style: Theme.of(context)
             .textTheme
             .bodySmall!
-            .copyWith(color: TransferPalet.bodyTextcolor),
+            .copyWith(color: AppColors.bodyTextcolor),
         items: controller.meses.map<DropdownMenuItem<Month>>(
           (Month value) {
             return DropdownMenuItem<Month>(

@@ -99,7 +99,7 @@ class DescriptionInput extends StatelessWidget {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: TransferPalet.darkcolor),
+          border: Border.all(color: AppColors.darkcolor),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +107,7 @@ class DescriptionInput extends StatelessWidget {
             Container(
               child: Text('Descreva'),
               padding: EdgeInsets.all(defaultPadding / 2),
-              color: TransferPalet.darkcolor,
+              color: AppColors.darkcolor,
             ),
             Expanded(
                 child: TextField(

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class TransferPalet {
+class AppColors {
   static final darkcolor = Color(0xff191923);
   static final bgcolor = Color(0xFF1E1E28);
   static final secondary = Color(0xff242430);

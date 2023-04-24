@@ -1,7 +1,16 @@
 import 'package:get/state_manager.dart';
 import 'package:sysmanagment/app/data/models/meses.dart';
+import 'package:sysmanagment/app/data/models/users.dart';
 
 class AppController extends GetxController {
+  UserModel? user = null;
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+  }
+
   RxInt _currentMonthId = DateTime.now().month.obs;
   List<Month> get meses => <Month>[
         Month.JANUARY,

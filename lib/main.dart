@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sysmanagment/app/ui/home/home_page.dart';
 import 'package:sysmanagment/shared.dart';
 
+import 'app/ui/auth_page/login/login_page.dart';
 import 'firebase_options.dart';
 
 Future<void> main(List<String> args) async {
@@ -18,10 +20,14 @@ Future<void> main(List<String> args) async {
 
 // Initialize Firebase
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-    // options: firebaseConfig,
-  );
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+      // options: firebaseConfig,
+    );
+  } on Exception {
+    print('Exception occured');
+  }
 
   //offline persistence
   // Web.
@@ -48,13 +54,8 @@ class SysManagment extends StatelessWidget {
                   bodyMedium: TextStyle(color: AppColors.bodyTextcolor))),
       getPages: [
         GetPage(
-            page: () => ResponsiveLayout(
-                  mobile: MobileLayout(),
-                  desktop: DesktopLayout(),
-                  tablet: TabletLayout(),
-                ),
-            name: '/',
-            bindings: [AppBindings()]),
+            page: () => HomePage(), name: '/home', bindings: [AppBindings()]),
+        GetPage(page: () => LoginPage(), name: '/', bindings: [AppBindings()]),
       ],
     );
   }

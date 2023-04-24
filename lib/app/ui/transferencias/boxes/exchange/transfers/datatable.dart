@@ -80,7 +80,7 @@ List<DataRow> _createDataRow(AsyncSnapshot<List<Transferencia>> trans) {
             DataCell(Text("${transfer.taxRate ?? 16}%")),
             DataCell(Text("${transfer.subtotal ?? 0.0}")),
             DataCell(Text("${transfer.transport ?? 0.0}%")),
-            DataCell(Text("${transfer.total!.toStringAsFixed(2) ?? 0.0}")),
+            DataCell(Text(transfer.total!.toStringAsFixed(2))),
             DataCell(Row(
               children: [
                 IconButton(

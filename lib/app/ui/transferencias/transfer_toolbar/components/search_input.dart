@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/transferencias/components.dart';
-import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
+import 'package:sysmanagment/app/shared/appColors.dart';
 
 class SearchInput extends StatelessWidget {
   SearchInput({super.key, this.width});

@@ -1,10 +1,10 @@
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:sysmanagment/app/controllers/auth_controller.dart';
+import 'package:sysmanagment/app/ui/auth_page/login/otp_page.dart';
 import 'package:sysmanagment/shared.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
   var controller = AuthController.instance;
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,85 +14,110 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('User Login'),
-            SizedBox(
-              height: 300,
-              width: 400,
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 36,
-                        width: double.infinity,
-                        child: TextField(
-                          controller: controller.phone_number_controller,
-                          decoration:
-                              InputDecoration(hintText: '+258 872988328'),
-                          onChanged: (value) {
-                            if (value.length == 9) {
-                              print('COMPLETE');
-                              controller.usernumber.value = '+258${value}';
-                              controller.phone_number_controller.text =
-                                  '+258 ${value}';
-                            } else {
-                              controller.usernumber.value = '';
-                            }
-                          },
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        height: 36,
-                        width: double.infinity,
-                        child: Obx(() {
-                          return Visibility(
-                            visible: controller.otpFieldVisibility.value,
-                            child: TextField(
-                              controller:
-                                  AuthController.instance.otp_number_controller,
-                              decoration: InputDecoration(hintText: 'sms code'),
+            Visibility(
+              visible: AuthController.instance.otpFieldVisibility.value,
+              child: Text(
+                'Insira O codigo OTP Que enviei te para ao numero ${AuthController.instance.usernumber}',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+            ),
+            Container(
+              constraints: BoxConstraints.tight(Size(320, 400)),
+              // decoration: BoxDecoration(
+              //     border: Border.all(color: AppColors.bluedownswatch)),
+              child: Column(
+                children: [
+                  Container(
+                    height: 340,
+                    child: Obx(() {
+                      return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Visibility(
+                              visible: !AuthController
+                                  .instance.otpFieldVisibility.value,
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: 68,
+                                    width: 300,
+                                    child: TextFormField(
+                                        validator: (value) {
+                                          if (value!.length > 9) {
+                                            return 'os campos esta cheios';
+                                          }
+                                          return null;
+                                        },
+                                        onFieldSubmitted: (e) {
+                                          print('submited');
+                                        },
+                                        onChanged: (value) {
+                                          if (value.length <= 9) {
+                                            FocusScope.of(context).nextFocus();
+                                          }
+                                        },
+                                        onSaved: (value) {
+                                          print('savedd');
+                                        },
+                                        decoration: InputDecoration(
+                                            label: Text('Seu Nome'))),
+                                  ),
+                                  SizedBox(
+                                    height: 68,
+                                    width: 300,
+                                    child: TextFormField(
+                                      onFieldSubmitted: (value) {
+                                        FocusScope.of(context).nextFocus();
+                                      },
+                                      onChanged: (value) {
+                                        if (value.length == 9) {
+                                          print('COMPLETE');
+                                          controller.usernumber.value =
+                                              '+258${value}';
+                                          controller.phone_number_controller
+                                              .text = '+258 ${value}';
+                                        } else {
+                                          controller.usernumber.value = '';
+                                        }
+                                      },
+                                      decoration: InputDecoration(
+                                          label: Text('Telefone')),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          );
-                        }),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Obx(() {
-                        return SizedBox(
-                          height: 36,
-                          width: double.infinity,
-                          child: FilledButton(
-                            onPressed: controller.usernumber.value != ''
+                            Visibility(
+                                visible: AuthController
+                                    .instance.otpFieldVisibility.value,
+                                child: OTPPage())
+                          ]);
+                    }),
+                  ),
+                  Obx(() {
+                    return SizedBox(
+                      height: 36,
+                      width: 300,
+                      child: ElevatedButton(
+                        onPressed:
+                            AuthController.instance.usernumber.value != ''
                                 ? () async {
-                                    if (controller.otpFieldVisibility.value) {
-                                      controller.verifyOTPCode();
+                                    if (AuthController
+                                        .instance.otpFieldVisibility.value) {
+                                      AuthController.instance.verifyOTPCode();
                                     } else {
-                                      controller.verifyUserPhoneNumber();
+                                      AuthController.instance
+                                          .verifyUserPhoneNumber();
                                     }
-                                    // await AuthController.instance
-                                    //     .signWithPhone();
-                                    // AuthController.instance.loginWithPhoneNumber();
                                   }
                                 : null,
-                            child: Text(controller.otpFieldVisibility.value
-                                ? 'Entrar'
-                                : 'VERIFY'),
-                          ),
-                        );
-                      }),
-                      SizedBox(
-                        height: 10,
+                        child: Text(controller.otpFieldVisibility.value
+                            ? 'Verificar & Prosseguir'
+                            : 'Entrar'),
                       ),
-                    ],
-                  ),
-                ),
+                    );
+                  })
+                ],
               ),
             )
           ],

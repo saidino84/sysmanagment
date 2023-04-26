@@ -8,6 +8,10 @@ class AuthController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
   TextEditingController phone_number_controller = TextEditingController();
   TextEditingController otp_number_controller = TextEditingController();
+  // final formKey = GlobalKey<FormState>();
+  final otpformKey = GlobalKey<FormState>();
+  //otpfilds
+  var otpvalue = '';
 
   RxString usernumber = ''.obs;
   String _receivedID = '';
@@ -35,7 +39,15 @@ class AuthController extends GetxController {
 
   // =============LOGIN WITH PHONENUMBER =============================
 
+  void verifyOTPValues() {
+    print('checking opt');
+    print('OTP IS ${otpvalue}');
+  }
+
   void verifyUserPhoneNumber() {
+    if (!usernumber.value.startsWith('+258') && usernumber.value.length == 9) {
+      usernumber.value = '+258${usernumber.value}';
+    }
     auth.verifyPhoneNumber(
       phoneNumber: usernumber.value,
       verificationCompleted: (PhoneAuthCredential credential) async {
@@ -58,7 +70,7 @@ class AuthController extends GetxController {
   Future<void> verifyOTPCode() async {
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
       verificationId: _receivedID,
-      smsCode: otp_number_controller.text,
+      smsCode: otpvalue,
     );
     await auth.signInWithCredential(credential).then(
           (value) => print('User Login in Sucessull'),

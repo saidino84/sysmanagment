@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/controllers/userController.dart';
 import 'package:sysmanagment/app/data/models/users.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
-import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
+import 'package:sysmanagment/app/shared/appColors.dart';
 
 class UsersDropDownMenu extends StatelessWidget {
   const UsersDropDownMenu({

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/global/score_repository.dart';
 
-import '../transferencias/appColors.dart';
+import '../../shared/appColors.dart';
 
 class Score {
   double value;

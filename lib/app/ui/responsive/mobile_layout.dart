@@ -5,7 +5,7 @@ import 'package:sysmanagment/app/shared/constants.dart';
 import 'package:sysmanagment/app/ui/sidemenu/side_menu/side_menu.dart';
 import 'package:sysmanagment/app/ui/transferencias/transfer_toolbar/components/month_dropdown.dart';
 import 'package:sysmanagment/app/ui/transferencias/transfer_toolbar/components/search_input.dart';
-import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
+import 'package:sysmanagment/app/shared/appColors.dart';
 import '../transferencias/mobilemain_ui.dart';
 
 class MobileLayout extends StatelessWidget {

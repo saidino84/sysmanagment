@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sysmanagment/app/controllers/tranferencia_controller.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
-import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
+import 'package:sysmanagment/app/shared/appColors.dart';
 
 import 'exchange/transfers/datatable.dart';
 import 'transferform/transferform.dart';

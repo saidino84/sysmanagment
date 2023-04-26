@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sysmanagment/app/controllers/AppController.dart';
 import 'package:sysmanagment/app/data/models/meses.dart';
-import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
+import 'package:sysmanagment/app/shared/appColors.dart';
 
 class MonthDropDownMenu extends StatelessWidget {
   const MonthDropDownMenu({

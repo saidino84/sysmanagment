@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sysmanagment/app/shared/constants.dart';
-import 'package:sysmanagment/app/ui/transferencias/appColors.dart';
+import 'package:sysmanagment/app/shared/appColors.dart';
 
 class AnimatedCircularProgress extends StatelessWidget {
   const AnimatedCircularProgress({
